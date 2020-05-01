@@ -1,0 +1,20 @@
+{
+  "name": "conventional-tools",
+  "version": "0.1.0-rc.0",
+  "description": "Tools for conventional commits compliant projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cedricmoulard/conventional-tools.git"
+  },
+  "author": "cedric.moulard@protonmail.com",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/cedricmoulard/conventional-tools/issues"
+  },
+  "homepage": "https://github.com/cedricmoulard/conventional-tools#readme",
+  "devDependencies": {}
+}
