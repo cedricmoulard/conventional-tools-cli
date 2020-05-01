@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/cedricmoulard/conventional-tools#readme",
   "devDependencies": {
+    "@commitlint/config-conventional": "^8.3.4",
     "@types/node": "^13.13.4",
     "@typescript-eslint/eslint-plugin": "^2.30.0",
     "@typescript-eslint/parser": "^2.30.0",
@@ -29,8 +30,16 @@
     "eslint-import-resolver-typescript": "^2.0.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-watch": "^6.0.1",
+    "husky": "^4.2.5",
     "prettier": "^2.0.5",
     "ts-node": "^8.9.1",
     "typescript": "^3.8.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint:check",
+      "pre-push": "npm run lint:check",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
