@@ -8,7 +8,8 @@
     "lint:eslint": "eslint \"{src,test}/**/*.ts\" --fix",
     "lint:check": "prettier --check ./{src,test}/**/*.ts; eslint \"{src,test}/**/*.ts\"",
     "lint": "tsc --noEmit && prettier --write ./{src,test}/**/*.ts && eslint \"{src,test}/**/*.ts\" --quiet --fix",
-    "eslint-check": "eslint --print-config ./src/index.ts | eslint-config-prettier-check"
+    "eslint-check": "eslint --print-config ./src/index.ts | eslint-config-prettier-check",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   "homepage": "https://github.com/cedricmoulard/conventional-tools#readme",
   "devDependencies": {
     "@commitlint/config-conventional": "^8.3.4",
+    "@types/jest": "^25.2.1",
     "@types/node": "^13.13.4",
     "@typescript-eslint/eslint-plugin": "^2.30.0",
     "@typescript-eslint/parser": "^2.30.0",
@@ -29,9 +31,12 @@
     "eslint-config-prettier": "^6.11.0",
     "eslint-import-resolver-typescript": "^2.0.0",
     "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jest": "^23.8.2",
     "eslint-watch": "^6.0.1",
     "husky": "^4.2.5",
+    "jest": "^25.5.3",
     "prettier": "^2.0.5",
+    "ts-jest": "^25.4.0",
     "ts-node": "^8.9.1",
     "typescript": "^3.8.3"
   },

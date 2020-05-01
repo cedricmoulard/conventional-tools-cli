@@ -8,6 +8,7 @@ module.exports = {
       typescript: {}
     }
   },
+  "plugins": ["jest"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2018,
@@ -20,11 +21,17 @@ module.exports = {
     "plugin:import/typescript",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "prettier"
+    "prettier",
+    "plugin:jest/recommended"
   ],
   "ignorePatterns": ["node_modules/"],
   "rules": {
     "@typescript-eslint/member-delimiter-style":"off",
-    "@typescript-eslint/type-annotation-spacing":"off"
+    "@typescript-eslint/type-annotation-spacing":"off",
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error"
   }
 }
