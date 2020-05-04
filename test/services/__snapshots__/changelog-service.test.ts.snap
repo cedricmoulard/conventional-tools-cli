@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Changelog Service given step 1 generates changelog for module 2 1`] = `Promise {}`;
+
+exports[`Changelog Service given step 2 generates changelog for patch module 2 1`] = `Promise {}`;
+
+exports[`Changelog Service given step 3 generates changelog with breaking change for module 1 (existing tag) 1`] = `Promise {}`;
+
+exports[`Changelog Service given step 3 generates changelog with breaking change for module 2 1`] = `Promise {}`;
+
+exports[`Changelog Service given step 3 generates changelog without breaking change for module 2 1`] = `Promise {}`;

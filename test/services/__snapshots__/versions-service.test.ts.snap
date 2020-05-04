@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Versions Service given step 1 returns minor version for module 2 1`] = `Promise {}`;
+
+exports[`Versions Service given step 2 returns patch version for module 2 1`] = `Promise {}`;
+
+exports[`Versions Service given step 3 returns major version for module 2 1`] = `Promise {}`;
+
+exports[`Versions Service given step 3 returns patch version for module 1 1`] = `Promise {}`;
+
+exports[`Versions Service given step 3 returns patch version for module 2 1`] = `Promise {}`;
