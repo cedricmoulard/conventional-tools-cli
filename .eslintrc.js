@@ -28,6 +28,7 @@ module.exports = {
   "rules": {
     "@typescript-eslint/member-delimiter-style":"off",
     "@typescript-eslint/type-annotation-spacing":"off",
+    "@typescript-eslint/ban-ts-ignore": "off",
     "jest/no-disabled-tests": "warn",
     "jest/no-focused-tests": "error",
     "jest/no-identical-title": "error",
