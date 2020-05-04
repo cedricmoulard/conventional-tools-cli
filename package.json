@@ -23,8 +23,16 @@
   "homepage": "https://github.com/cedricmoulard/conventional-tools#readme",
   "devDependencies": {
     "@commitlint/config-conventional": "^8.3.4",
+    "@types/commander": "^2.12.2",
+    "@types/conventional-changelog": "^3.1.0",
+    "@types/conventional-recommended-bump": "^6.0.0",
+    "@types/fs-extra": "^8.1.0",
+    "@types/git-semver-tags": "^3.0.0",
     "@types/jest": "^25.2.1",
     "@types/node": "^13.13.4",
+    "@types/npmlog": "^4.1.2",
+    "@types/semver": "^7.1.0",
+    "@types/uuid": "^7.0.3",
     "@typescript-eslint/eslint-plugin": "^2.30.0",
     "@typescript-eslint/parser": "^2.30.0",
     "eslint": "^6.8.0",
@@ -33,12 +41,14 @@
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jest": "^23.8.2",
     "eslint-watch": "^6.0.1",
+    "fs-extra": "^9.0.0",
     "husky": "^4.2.5",
     "jest": "^25.5.3",
     "prettier": "^2.0.5",
     "ts-jest": "^25.4.0",
     "ts-node": "^8.9.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "uuid": "^8.0.0"
   },
   "husky": {
     "hooks": {
@@ -46,5 +56,15 @@
       "pre-push": "npm run lint:check",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
+  },
+  "dependencies": {
+    "commander": "^5.1.0",
+    "conventional-changelog": "^3.1.18",
+    "conventional-changelog-conventionalcommits": "^4.2.3",
+    "conventional-recommended-bump": "^6.0.5",
+    "extract-zip": "^2.0.0",
+    "git-semver-tags": "^3.0.1",
+    "npmlog": "^4.1.2",
+    "string-to-stream": "^3.0.1"
   }
 }
