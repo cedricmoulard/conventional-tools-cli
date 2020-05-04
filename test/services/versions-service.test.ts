@@ -33,7 +33,7 @@ describe('Versions Service', () => {
 
       // When
       const stream = await getVersions(data)
-      const actual = getResultFromStream(stream)
+      const actual = await getResultFromStream(stream)
       // Then
       expect(actual).toMatchSnapshot()
     })
@@ -54,7 +54,7 @@ describe('Versions Service', () => {
 
       // When
       const stream = await getVersions(data)
-      const actual = getResultFromStream(stream)
+      const actual = await getResultFromStream(stream)
       // Then
       expect(actual).toMatchSnapshot()
     })
@@ -75,7 +75,7 @@ describe('Versions Service', () => {
 
       // When
       const stream = await getVersions(data)
-      const actual = getResultFromStream(stream)
+      const actual = await getResultFromStream(stream)
       // Then
       expect(actual).toMatchSnapshot()
     })
@@ -90,7 +90,7 @@ describe('Versions Service', () => {
 
       // When
       const stream = await getVersions(data)
-      const actual = getResultFromStream(stream)
+      const actual = await getResultFromStream(stream)
       // Then
       expect(actual).toMatchSnapshot()
     })
@@ -105,7 +105,7 @@ describe('Versions Service', () => {
 
       // When
       const stream = await getVersions(data)
-      const actual = getResultFromStream(stream)
+      const actual = await getResultFromStream(stream)
       // Then
       expect(actual).toMatchSnapshot()
     })

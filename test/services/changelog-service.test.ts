@@ -45,7 +45,7 @@ describe('Changelog Service', () => {
 
       // When
       const stream = await getChangelog(data)
-      const actual = getResultFromStream(stream)
+      const actual = await getResultFromStream(stream)
       // Then
       expect(actual).toMatchSnapshot()
     })
@@ -66,7 +66,7 @@ describe('Changelog Service', () => {
 
       // When
       const stream = await getChangelog(data)
-      const actual = getResultFromStream(stream)
+      const actual = await getResultFromStream(stream)
       // Then
       expect(actual).toMatchSnapshot()
     })
@@ -87,7 +87,7 @@ describe('Changelog Service', () => {
 
       // When
       const stream = await getChangelog(data)
-      const actual = getResultFromStream(stream)
+      const actual = await getResultFromStream(stream)
       // Then
       expect(actual).toMatchSnapshot()
     })
@@ -102,7 +102,7 @@ describe('Changelog Service', () => {
 
       // When
       const stream = await getChangelog(data)
-      const actual = getResultFromStream(stream)
+      const actual = await getResultFromStream(stream)
       // Then
       expect(actual).toMatchSnapshot()
     })
@@ -118,7 +118,7 @@ describe('Changelog Service', () => {
 
       // When
       const stream = await getChangelog(data)
-      const actual = getResultFromStream(stream)
+      const actual = await getResultFromStream(stream)
       // Then
       expect(actual).toMatchSnapshot()
     })
