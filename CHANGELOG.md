@@ -1,3 +1,14 @@
+## [1.0.0](https://github.com/cedricmoulard/conventional-tools/compare/0.1.0...1.0.0) (2020-05-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* **versions:** change nextVersion to nextRelease
+
+### Bug Fixes
+
+* **versions:** change nextVersion to nextRelease ([9c1da2a](https://github.com/cedricmoulard/conventional-tools/commit/9c1da2a17c02407b92d1c53d54626c078b05b9c6))
+
 ## 0.1.0 (2020-05-04)
 
 
