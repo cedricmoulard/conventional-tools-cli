@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Versions Service given step 1 returns minor version for module 2 1`] = `Promise {}`;
+exports[`Versions Service given step 1 returns minor version for module 2 1`] = `"{\\"currentVersion\\":\\"0.0.0\\",\\"nextRelease\\":\\"0.1.0\\",\\"nextMinor\\":\\"0.2.0\\",\\"nextPatch\\":\\"0.0.1\\"}"`;
 
-exports[`Versions Service given step 2 returns patch version for module 2 1`] = `Promise {}`;
+exports[`Versions Service given step 2 returns patch version for module 2 1`] = `"{\\"currentVersion\\":\\"1.0.0\\",\\"nextRelease\\":\\"1.0.1\\",\\"nextMinor\\":\\"1.1.0\\",\\"nextPatch\\":\\"1.0.1\\"}"`;
 
-exports[`Versions Service given step 3 returns major version for module 2 1`] = `Promise {}`;
+exports[`Versions Service given step 3 returns major version for module 2 1`] = `"{\\"currentVersion\\":\\"1.0.1\\",\\"nextRelease\\":\\"2.0.0\\",\\"nextMinor\\":\\"2.1.0\\",\\"nextPatch\\":\\"1.0.2\\"}"`;
 
-exports[`Versions Service given step 3 returns patch version for module 1 1`] = `Promise {}`;
+exports[`Versions Service given step 3 returns patch version for module 1 1`] = `"{\\"currentVersion\\":\\"2.0.0\\",\\"nextRelease\\":\\"2.0.1\\",\\"nextMinor\\":\\"2.1.0\\",\\"nextPatch\\":\\"2.0.1\\"}"`;
 
-exports[`Versions Service given step 3 returns patch version for module 2 1`] = `Promise {}`;
+exports[`Versions Service given step 3 returns patch version for module 2 1`] = `"{\\"currentVersion\\":\\"1.0.1\\",\\"nextRelease\\":\\"1.0.2\\",\\"nextMinor\\":\\"1.1.0\\",\\"nextPatch\\":\\"1.0.2\\"}"`;

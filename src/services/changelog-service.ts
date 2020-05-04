@@ -69,7 +69,7 @@ export const getChangelog = async (data: GetChangelogData): Promise<NodeJS.Reada
       headerPattern: buildPattern(data),
     },
     {
-      finalizeContext: finalize(host, data.tagExists ? versions.currentVersion : versions.nextVersion),
+      finalizeContext: finalize(host, data.tagExists ? versions.currentVersion : versions.nextRelease),
     },
   )
 }

@@ -11,6 +11,7 @@ import * as str from 'string-to-stream'
 
 const DEFAULT_CURRENT_VERSION = '0.0.0'
 const DEFAULT_NEXT_VERSION = '0.1.0'
+const DEFAULT_NEXT_MINOR = '0.2.0'
 const DEFAULT_NEXT_PATCH = '0.0.1'
 const MINOR = 'minor'
 const PATCH = 'patch'
@@ -25,11 +26,13 @@ export const buildVersions = (currentVersion: string, releaseType: ReleaseType):
     currentVersion = DEFAULT_CURRENT_VERSION
   }
   const nextVersion = inc(currentVersion, releaseType) || DEFAULT_NEXT_VERSION
+  const nextMinor = inc(nextVersion, MINOR) || DEFAULT_NEXT_MINOR
   const nextPatch = inc(currentVersion, PATCH) || DEFAULT_NEXT_PATCH
 
   return {
     currentVersion,
-    nextVersion,
+    nextRelease: nextVersion,
+    nextMinor,
     nextPatch,
   }
 }

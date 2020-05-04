@@ -1,5 +1,6 @@
 export interface Versions {
   readonly currentVersion: string
-  readonly nextVersion: string
+  readonly nextRelease: string
+  readonly nextMinor: string
   readonly nextPatch: string
 }
