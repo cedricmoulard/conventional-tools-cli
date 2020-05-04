@@ -1,9 +1,9 @@
-# conventional-tools
+# conventional-tools-cli
 Tools for conventional commits compliant projects
 
 ## Quick start
 ```
-npm i -g conventional-tools
+npm i -g conventional-tools-cli
 ```
 
 ### Get usage
