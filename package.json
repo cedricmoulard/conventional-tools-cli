@@ -1,6 +1,6 @@
 {
   "name": "conventional-tools-cli",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Tools for conventional commits compliant projects",
   "main": "index.js",
   "scripts": {
@@ -39,6 +39,7 @@
     "@types/uuid": "^7.0.3",
     "@typescript-eslint/eslint-plugin": "^2.30.0",
     "@typescript-eslint/parser": "^2.30.0",
+    "commitlint": "^9.1.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-import-resolver-typescript": "^2.0.0",
@@ -64,7 +65,7 @@
   "dependencies": {
     "commander": "^5.1.0",
     "conventional-changelog": "^3.1.18",
-    "conventional-changelog-conventionalcommits": "^4.2.3",
+    "conventional-changelog-conventionalcommits": "^4.3.1",
     "conventional-recommended-bump": "^6.0.5",
     "extract-zip": "^2.0.0",
     "git-semver-tags": "^3.0.1",

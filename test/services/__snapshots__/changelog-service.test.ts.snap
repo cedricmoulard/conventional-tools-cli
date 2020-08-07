@@ -65,7 +65,7 @@ exports[`Changelog Service given step 3 generates changelog with breaking change
 `;
 
 exports[`Changelog Service given step 3 generates changelog without breaking change for module 2 1`] = `
-"## 1.0.2 (2019-05-16)
+"## 1.0.1 (2019-05-16)
 
 "
 `;

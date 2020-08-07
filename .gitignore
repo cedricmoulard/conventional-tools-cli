@@ -190,3 +190,5 @@ temp/
 
 # End of https://www.gitignore.io/api/node,intellij,visualstudiocode
 .DS_Store
+
+package-lock.json

@@ -65,7 +65,7 @@ describe('Versions Service', () => {
       await prepareRepository(tempPath, 'step-3.zip')
     })
 
-    test('returns patch version for module 2', async () => {
+    test('returns no new version for module 2', async () => {
       // Given
       const data: GetVersionData = {
         ...globalData,
@@ -95,7 +95,7 @@ describe('Versions Service', () => {
       expect(actual).toMatchSnapshot()
     })
 
-    test('returns patch version for module 1', async () => {
+    test('returns no new version for module 1', async () => {
       // Given
       const data: GetVersionData = {
         ...globalData,
