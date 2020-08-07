@@ -1,6 +1,6 @@
 import * as conventionalChangelog from 'conventional-changelog'
 import { GetChangelogData } from '../commands/get-changelog-command'
-import { buildVersions, getCurrentVersion, getReleaseType } from './versions-services'
+import { buildVersions, getCurrentVersion, getReleaseInformation } from './versions-services'
 import * as logger from 'npmlog'
 import { buildPattern } from './utils'
 import { Context, GeneratedContext, Options } from 'conventional-changelog-writer'
@@ -48,9 +48,9 @@ const finalize = (host: string, version: string): Options.FinalizeContext<Contex
 export const getChangelog = async (data: GetChangelogData): Promise<NodeJS.ReadableStream> => {
   logger.verbose('[changelog-service][getChangelog]', 'Enter function')
 
-  const releaseType = await getReleaseType(data)
+  const releaseInformation = await getReleaseInformation(data)
   const currentVersion = await getCurrentVersion(data)
-  const versions = buildVersions(currentVersion, releaseType)
+  const versions = buildVersions(currentVersion, releaseInformation)
 
   const { tagExists, tagPrefix, host, preset } = data
   const options: conventionalChangelog.Options = {

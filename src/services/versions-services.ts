@@ -13,27 +13,38 @@ const DEFAULT_CURRENT_VERSION = '0.0.0'
 const DEFAULT_NEXT_VERSION = '0.1.0'
 const DEFAULT_NEXT_MINOR = '0.2.0'
 const DEFAULT_NEXT_PATCH = '0.0.1'
+const DEFAULT_COMMIT_NUMBER = 0
 const MINOR = 'minor'
 const PATCH = 'patch'
 const RECENT_TAG_INDEX = 0
 
-export const buildVersions = (currentVersion: string, releaseType: ReleaseType): Versions => {
+interface ReleaseInformation{
+  releaseType: ReleaseType,
+  commitNumber: number
+}
+
+export const buildVersions = (currentVersion: string, releaseInformation: ReleaseInformation): Versions => {
   logger.verbose('[versions-service][buildVersions]', 'Enter function')
   logger.silly('[versions-service][buildVersions] - input', 'currentVersion: %s', currentVersion)
-  logger.silly('[versions-service][buildVersions] - input', 'releaseType: %s', releaseType)
+  logger.silly('[versions-service][buildVersions] - input', 'releaseType: %s', releaseInformation.releaseType)
+  logger.silly('[versions-service][buildVersions] - input', 'commitNumber: %s', releaseInformation.commitNumber)
 
   if (!currentVersion) {
     currentVersion = DEFAULT_CURRENT_VERSION
   }
-  const nextVersion = inc(currentVersion, releaseType) || DEFAULT_NEXT_VERSION
-  const nextMinor = inc(nextVersion, MINOR) || DEFAULT_NEXT_MINOR
+  const commitNumber =  releaseInformation.commitNumber
+  const nextRelease = commitNumber > 0
+      ? inc(currentVersion, releaseInformation.releaseType) || DEFAULT_NEXT_VERSION
+      : currentVersion
+  const nextMinor = inc(nextRelease, MINOR) || DEFAULT_NEXT_MINOR
   const nextPatch = inc(currentVersion, PATCH) || DEFAULT_NEXT_PATCH
 
   return {
     currentVersion,
-    nextRelease: nextVersion,
+    nextRelease,
     nextMinor,
     nextPatch,
+    commitNumber
   }
 }
 
@@ -50,26 +61,39 @@ export function cleanVersion(version: string, tagPrefix = ''): string {
   }
 }
 
-export const getReleaseType = (data: GetVersionData): Promise<BumpRecommendation.ReleaseType> => {
+export const getReleaseInformation = (data: GetVersionData): Promise<ReleaseInformation> => {
   logger.verbose('[versions-service][getReleaseType]', 'Enter function')
   logger.silly('[versions-service][getReleaseType] - input', 'data: %j', data)
+
+  let commitNumber = DEFAULT_COMMIT_NUMBER
+
   const options: BumpOptions = {
     tagPrefix: data.tagPrefix,
     preset: data.preset,
     whatBump: commits => {
       const filteredCommits = commits.filter(commit => !!commit.type)
 
-      let level = 2
+      const PATCH_LEVEL = 0;
+      const MINOR_LEVEL = 1;
+      const MAJOR_LEVEL = 2;
+      let level = MAJOR_LEVEL
 
       filteredCommits.forEach(commit => {
+        const MERGE_TYPE = 'merge';
+        const FEATURE_TYPE = 'feat';
         const { type, notes } = commit
 
         logger.silly('[versions-service][getReleaseType] - commit', 'type: "%s", notes: "%j"', type, notes)
-        let commitLevel = 2
+        let commitLevel = MAJOR_LEVEL
+
         if (notes && notes.length > 0) {
-          commitLevel = 0
-        } else if (commit.type === 'feat') {
-          commitLevel = 1
+          commitLevel = PATCH_LEVEL
+        } else if (FEATURE_TYPE === commit.type) {
+          commitLevel = MINOR_LEVEL
+        }
+
+        if(MERGE_TYPE !== commit.type){
+          ++ commitNumber
         }
 
         if (commitLevel < level) {
@@ -83,7 +107,7 @@ export const getReleaseType = (data: GetVersionData): Promise<BumpRecommendation
     },
   }
 
-  return new Promise<BumpRecommendation.ReleaseType>((resolve, reject) => {
+  return new Promise<ReleaseInformation>((resolve, reject) => {
     conventionalRecommendedBump(
       options,
       {
@@ -95,7 +119,7 @@ export const getReleaseType = (data: GetVersionData): Promise<BumpRecommendation
           reject(error)
         } else {
           logger.silly('[versions-service][getReleaseType] - output', 'recommendation: %j', recommendation)
-          resolve(recommendation.releaseType)
+          resolve({releaseType: recommendation.releaseType || 'patch', commitNumber})
         }
       },
     )
@@ -121,9 +145,9 @@ export const getCurrentVersion = (configuration: gitSemverTags.Options): Promise
 export const getVersions = async (data: GetVersionData): Promise<NodeJS.ReadableStream> => {
   logger.verbose('[versions-service][getVersions]', 'Enter function')
 
-  const releaseType = await getReleaseType(data)
+  const releaseInformation = await getReleaseInformation(data)
   const currentVersion = await getCurrentVersion(data)
-  const versions = buildVersions(currentVersion, releaseType)
+  const versions = buildVersions(currentVersion, releaseInformation)
 
   return str(JSON.stringify(versions))
 }
