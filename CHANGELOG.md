@@ -1,3 +1,10 @@
+## [1.0.0](https://github.com/cedricmoulard/conventional-tools/compare/1.0.0...1.1.0) (2020-08-07)
+
+
+### Features
+
+* **versions:** add commit number in result ([34b7d11](https://github.com/cedricmoulard/conventional-tools/commit/34b7d1182957cd7dfd31ddc22b0dbac1252ff5fc))
+
 ## [1.0.0](https://github.com/cedricmoulard/conventional-tools/compare/0.1.0...1.0.0) (2020-05-04)
 
 
