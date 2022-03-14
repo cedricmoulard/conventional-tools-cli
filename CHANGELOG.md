@@ -1,8 +1,15 @@
-### 1.2.1 (2022-03-14)
+## 1.3.0 (2022-03-14)
+
+
+### Features
+
+* add version in cli ([04d87fe](/cedricmoulard/conventional-tools/commit/04d87fea25b2045c3bf436399a3128b19e46951f))
+* upgrade to commander v9 ([6d38a03](/cedricmoulard/conventional-tools/commit/6d38a038e99c860470ecf606f9507ad400152505))
+
 
 ### Bug Fixes
 
-* downgrade commander to v5 ([5b9b932](/cedricmoulard/conventional-tools/commit/5b9b932442599d526da7fb060f60f56e5ae018e7))
+* **versions:** remove duplicated tag-prefix option ([2586111](/cedricmoulard/conventional-tools/commit/25861118ced85b90ee92e3e6b5c1285a9fb4f182))
 
 ## 1.2.0 (2022-03-14)
 
