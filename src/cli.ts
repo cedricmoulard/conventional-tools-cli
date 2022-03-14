@@ -12,4 +12,4 @@ async function main(): Promise<void> {
   await program.parseAsync(process.argv);
 }
 
-main()
+void main()
