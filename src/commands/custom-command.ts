@@ -32,5 +32,5 @@ export abstract class CustomCommand<T extends CommandData> extends Command {
     return this.run(data)
   }
 
-  protected abstract async run(data: T): Promise<void>
+  protected abstract run(data: T): Promise<void>
 }
