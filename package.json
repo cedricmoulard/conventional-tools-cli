@@ -28,10 +28,10 @@
   "devDependencies": {
     "@commitlint/config-conventional": "^8.3.4",
     "@types/commander": "^2.12.2",
-    "@types/conventional-changelog": "^3.1.0",
-    "@types/conventional-recommended-bump": "^6.0.0",
+    "@types/conventional-changelog": "^3.1.1",
+    "@types/conventional-recommended-bump": "^6.1.0",
     "@types/fs-extra": "^8.1.0",
-    "@types/git-semver-tags": "^3.0.0",
+    "@types/git-semver-tags": "^4.1.1",
     "@types/jest": "^26.0.24",
     "@types/node": "^17.0.21",
     "@types/npmlog": "^4.1.2",
@@ -46,6 +46,7 @@
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jest": "^23.8.2",
     "eslint-watch": "^6.0.1",
+    "extract-zip": "^2.0.0",
     "fs-extra": "^9.0.0",
     "husky": "^4.2.5",
     "jest": "^26.6.3",
@@ -64,11 +65,10 @@
   },
   "dependencies": {
     "commander": "^9.0.0",
-    "conventional-changelog": "^3.1.18",
-    "conventional-changelog-conventionalcommits": "^4.3.1",
-    "conventional-recommended-bump": "^6.0.5",
-    "extract-zip": "^2.0.0",
-    "git-semver-tags": "^3.0.1",
+    "conventional-changelog": "^3.1.25",
+    "conventional-changelog-conventionalcommits": "^4.6.3",
+    "conventional-recommended-bump": "^6.1.0",
+    "git-semver-tags": "^4.1.1",
     "npmlog": "^4.1.2",
     "string-to-stream": "^3.0.1"
   }
