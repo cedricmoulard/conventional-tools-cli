@@ -11,8 +11,8 @@ export const RELEASE_COUNT_FOR_CREATE_TAG = 1
 
 const finalize = (host: string, version: string): Options.FinalizeContext<Context, Commit> => {
   return (context: GeneratedContext<Commit, Context>): GeneratedContext => {
-    logger.verbose('[utils][finalize]', 'Finalize context')
-    logger.silly('[utils][finalize] - input', 'context: %o', context)
+    logger.verbose('[changelog-service][finalize]', 'Finalize context')
+    logger.silly('[changelog-service][finalize] - input', 'context: %o', context)
 
     let noteGroups = context.noteGroups.filter(noteGroup => {
       // @ts-ignore
@@ -39,7 +39,7 @@ const finalize = (host: string, version: string): Options.FinalizeContext<Contex
       noteGroups,
     } as GeneratedContext
 
-    logger.silly('[utils][finalize] - output', 'context: %o', newContext)
+    logger.silly('[changelog-service][finalize] - output', 'context: %o', newContext)
 
     return newContext
   }
