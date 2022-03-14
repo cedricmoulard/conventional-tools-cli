@@ -1,4 +1,14 @@
-### 1.2.1 (2022-03-14)
+## 1.3.0 (2022-03-14)
+
+
+### Features
+
+* add version in cli ([06b370c](/cedricmoulard/conventional-tools/commit/06b370ca71d5fcd613632ba12ff5629a16f1b2a1))
+* upgrade to commander v9 ([6d38a03](/cedricmoulard/conventional-tools/commit/6d38a038e99c860470ecf606f9507ad400152505))
+
+
+## 1.2.1 (2022-03-14)
+
 
 ### Bug Fixes
 
