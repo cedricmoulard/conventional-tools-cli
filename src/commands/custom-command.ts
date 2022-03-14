@@ -13,10 +13,11 @@ export abstract class CustomCommand<T extends CommandData> extends Command {
     this.requiredOption('-t, --tag-prefix <prefix>', 'tag prefix to use', '')
     this.requiredOption('-s, --scopes <scopes>', 'conventional commits scope', '*')
 
-    this.action((command: CustomCommand<T>) => {
-      // @ts-ignore
-      return this.preRun(command.opts())
+    this.action((options: T) => {
+      logger.info('[custom-command][constructor]', 'options: %j', options)
+      return this.preRun(options)
     })
+
     options.forEach(option => {
       if (option.required) {
         this.requiredOption(option.flags, option.description, option.defaultValue)
@@ -26,11 +27,11 @@ export abstract class CustomCommand<T extends CommandData> extends Command {
     })
   }
 
-  private async preRun(data: T): Promise<void> {
+  private async preRun(options: T): Promise<void> {
     // @ts-ignore
-    logger.level = data.debug
-    logger.info('[custom-command][preRun]', 'data: %j', data)
-    return this.run(data)
+    logger.level = options.debug
+    logger.info('[custom-command][preRun]', 'data: %j', options)
+    return this.run(options)
   }
 
   protected abstract run(data: T): Promise<void>

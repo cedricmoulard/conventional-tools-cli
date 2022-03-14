@@ -13,12 +13,6 @@ export interface GetVersionData extends CommandData {
 
 const options: Option[] = [
   {
-    flags: '-t, --tag-prefix <prefix>',
-    description: 'tag prefix to use',
-    defaultValue: '',
-    required: false,
-  },
-  {
     flags: '-o, --output-file <file>',
     description: 'write the versions to this file',
     required: false,
