@@ -1,4 +1,23 @@
-## [1.0.0](https://github.com/cedricmoulard/conventional-tools/compare/1.0.0...1.1.0) (2020-08-07)
+### 1.2.1 (2022-03-14)
+
+### Bug Fixes
+
+* downgrade commander to v5 ([5b9b932](/cedricmoulard/conventional-tools/commit/5b9b932442599d526da7fb060f60f56e5ae018e7))
+
+## 1.2.0 (2022-03-14)
+
+### Features
+
+* upgrade commander to v9 ([03db800](/cedricmoulard/conventional-tools/commit/03db800d11d367ed771c7fc79b408cf1941d592d))
+* upgrade libs versions ([e3a0daf](/cedricmoulard/conventional-tools/commit/e3a0daf89a85fe4b6042bf747f306d5194fb4e16))
+* upgrade npmlog to v6 ([dacb43f](/cedricmoulard/conventional-tools/commit/dacb43fc743c4903e6246628171ec44a025a66c0))
+* upgrade to ts 4 ([9ddc99a](/cedricmoulard/conventional-tools/commit/9ddc99a6dc93b95596b698013f91c603ec54478f))
+
+### Bug Fixes
+
+* print valid next minor version ([9da0ef9](/cedricmoulard/conventional-tools/commit/9da0ef98cf3bf6860e50d74940559fff941b1a32))
+
+## [1.1.0](https://github.com/cedricmoulard/conventional-tools/compare/1.0.0...1.1.0) (2020-08-07)
 
 
 ### Features
