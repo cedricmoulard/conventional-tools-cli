@@ -26,8 +26,12 @@ module.exports = {
   ],
   "ignorePatterns": ["node_modules/"],
   "rules": {
+    "@typescript-eslint/no-unsafe-call":"warn",
+    "@typescript-eslint/no-unsafe-assignment":"warn",
+    "@typescript-eslint/no-unsafe-member-access":"off",
     "@typescript-eslint/member-delimiter-style":"off",
     "@typescript-eslint/type-annotation-spacing":"off",
+    "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/ban-ts-ignore": "off",
     "jest/no-disabled-tests": "warn",
     "jest/no-focused-tests": "error",

@@ -18,8 +18,8 @@ const MINOR = 'minor'
 const PATCH = 'patch'
 const RECENT_TAG_INDEX = 0
 
-interface ReleaseInformation{
-  releaseType: ReleaseType,
+interface ReleaseInformation {
+  releaseType: ReleaseType
   commitNumber: number
 }
 
@@ -32,11 +32,9 @@ export const buildVersions = (currentVersion: string, releaseInformation: Releas
   if (!currentVersion) {
     currentVersion = DEFAULT_CURRENT_VERSION
   }
-  const commitNumber =  releaseInformation.commitNumber
-  const nextRelease = commitNumber > 0
-      ? inc(currentVersion, releaseInformation.releaseType) || DEFAULT_NEXT_VERSION
-      : currentVersion
-  const nextMinor = inc(nextRelease, MINOR) || DEFAULT_NEXT_MINOR
+  const commitNumber = releaseInformation.commitNumber
+  const nextRelease = commitNumber > 0 ? inc(currentVersion, releaseInformation.releaseType) || DEFAULT_NEXT_VERSION : currentVersion
+  const nextMinor = inc(currentVersion, MINOR) || DEFAULT_NEXT_MINOR
   const nextPatch = inc(currentVersion, PATCH) || DEFAULT_NEXT_PATCH
 
   return {
@@ -44,7 +42,7 @@ export const buildVersions = (currentVersion: string, releaseInformation: Releas
     nextRelease,
     nextMinor,
     nextPatch,
-    commitNumber
+    commitNumber,
   }
 }
 
@@ -55,6 +53,7 @@ export function cleanVersion(version: string, tagPrefix = ''): string {
   const cleanVersion = clean(version.replace(tagPrefix, ''), { loose: true })
 
   if (!cleanVersion) {
+    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     throw new Error(`Version ${cleanVersion} is not valid`)
   } else {
     return cleanVersion
@@ -73,14 +72,14 @@ export const getReleaseInformation = (data: GetVersionData): Promise<ReleaseInfo
     whatBump: commits => {
       const filteredCommits = commits.filter(commit => !!commit.type)
 
-      const PATCH_LEVEL = 0;
-      const MINOR_LEVEL = 1;
-      const MAJOR_LEVEL = 2;
+      const PATCH_LEVEL = 0
+      const MINOR_LEVEL = 1
+      const MAJOR_LEVEL = 2
       let level = MAJOR_LEVEL
 
       filteredCommits.forEach(commit => {
-        const MERGE_TYPE = 'merge';
-        const FEATURE_TYPE = 'feat';
+        const MERGE_TYPE = 'merge'
+        const FEATURE_TYPE = 'feat'
         const { type, notes } = commit
 
         logger.silly('[versions-service][getReleaseType] - commit', 'type: "%s", notes: "%j"', type, notes)
@@ -92,8 +91,8 @@ export const getReleaseInformation = (data: GetVersionData): Promise<ReleaseInfo
           commitLevel = MINOR_LEVEL
         }
 
-        if(MERGE_TYPE !== commit.type){
-          ++ commitNumber
+        if (MERGE_TYPE !== commit.type) {
+          ++commitNumber
         }
 
         if (commitLevel < level) {
@@ -115,11 +114,12 @@ export const getReleaseInformation = (data: GetVersionData): Promise<ReleaseInfo
       },
       (error, recommendation: BumpRecommendation) => {
         if (error) {
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
           logger.error('[versions-service][getReleaseType]', error)
           reject(error)
         } else {
           logger.silly('[versions-service][getReleaseType] - output', 'recommendation: %j', recommendation)
-          resolve({releaseType: recommendation.releaseType || 'patch', commitNumber})
+          resolve({ releaseType: recommendation.releaseType || 'patch', commitNumber })
         }
       },
     )

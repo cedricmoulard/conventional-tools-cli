@@ -14,7 +14,7 @@ export abstract class CustomCommand<T extends CommandData> extends Command {
     this.requiredOption('-s, --scopes <scopes>', 'conventional commits scope', '*')
 
     this.action((command: CustomCommand<T>) => {
-      return this.preRun(command.opts() as T)
+      return this.preRun(command.opts())
     })
     options.forEach(option => {
       if (option.required) {
@@ -32,5 +32,5 @@ export abstract class CustomCommand<T extends CommandData> extends Command {
     return this.run(data)
   }
 
-  protected abstract async run(data: T): Promise<void>
+  protected abstract run(data: T): Promise<void>
 }
