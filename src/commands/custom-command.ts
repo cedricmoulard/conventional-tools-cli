@@ -14,6 +14,7 @@ export abstract class CustomCommand<T extends CommandData> extends Command {
     this.requiredOption('-s, --scopes <scopes>', 'conventional commits scope', '*')
 
     this.action((command: CustomCommand<T>) => {
+      // @ts-ignore
       return this.preRun(command.opts())
     })
     options.forEach(option => {

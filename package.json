@@ -64,7 +64,7 @@
     }
   },
   "dependencies": {
-    "commander": "^9.0.0",
+    "commander": "^5.1.0",
     "conventional-changelog": "^3.1.25",
     "conventional-changelog-conventionalcommits": "^4.6.3",
     "conventional-recommended-bump": "^6.1.0",
