@@ -4,6 +4,7 @@
   "description": "Tools for conventional commits compliant projects",
   "main": "index.js",
   "scripts": {
+    "prebuild": "node -p \"'export const LIB_VERSION = ' + JSON.stringify(require('./package.json').version) + ';'\" > src/version.ts",
     "build": "tsc",
     "lint:prettier": "prettier --write ./{src,test}/**/*.ts",
     "lint:eslint": "eslint \"{src,test}/**/*.ts\" --fix",
