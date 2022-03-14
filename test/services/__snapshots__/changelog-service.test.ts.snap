@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Changelog Service given step 1 generates changelog for module 2 1`] = `
-"## 0.1.0 (2019-05-14)
+"### 0.1.0 (2019-05-14)
 
 
 ### Features
@@ -19,7 +19,7 @@ exports[`Changelog Service given step 1 generates changelog for module 2 1`] = `
 `;
 
 exports[`Changelog Service given step 2 generates changelog for patch module 2 1`] = `
-"## 1.0.1 (2019-05-16)
+"### 1.0.1 (2019-05-16)
 
 
 ### Bug Fixes
@@ -30,7 +30,7 @@ exports[`Changelog Service given step 2 generates changelog for patch module 2 1
 `;
 
 exports[`Changelog Service given step 3 generates changelog with breaking change for module 1 (existing tag) 1`] = `
-"## 2.0.0 (2019-05-16)
+"### 2.0.0 (2019-05-16)
 
 
 ### ⚠ BREAKING CHANGES
@@ -50,7 +50,7 @@ exports[`Changelog Service given step 3 generates changelog with breaking change
 `;
 
 exports[`Changelog Service given step 3 generates changelog with breaking change for module 2 1`] = `
-"## 2.0.0 (2019-05-16)
+"### 2.0.0 (2019-05-16)
 
 
 ### ⚠ BREAKING CHANGES
@@ -65,7 +65,7 @@ exports[`Changelog Service given step 3 generates changelog with breaking change
 `;
 
 exports[`Changelog Service given step 3 generates changelog without breaking change for module 2 1`] = `
-"## 1.0.1 (2019-05-16)
+"### 1.0.1 (2019-05-16)
 
 "
 `;
