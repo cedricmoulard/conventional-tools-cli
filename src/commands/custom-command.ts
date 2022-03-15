@@ -11,6 +11,7 @@ export abstract class CustomCommand<T extends CommandData> extends Command {
     this.option('-d, --debug <level>', 'output extra debugging (silly, verbose', 'silent')
     this.requiredOption('-p, --preset <preset>', 'preset to use', 'conventionalcommits')
     this.requiredOption('-t, --tag-prefix <prefix>', 'tag prefix to use', '')
+    this.requiredOption('-e, --tag-exists <tag-exists>', 'tag already exists', false)
     this.requiredOption('-s, --scopes <scopes>', 'conventional commits scope', '*')
 
     this.action((options: T) => {

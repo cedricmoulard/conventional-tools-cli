@@ -8,6 +8,7 @@ import { buildPattern } from './utils'
 import BumpOptions = conventionalRecommendedBump.Options
 import BumpRecommendation = conventionalRecommendedBump.Callback.Recommendation
 import * as str from 'string-to-stream'
+import { CommandData } from '../models/command-data'
 
 const DEFAULT_CURRENT_VERSION = '0.0.0'
 const DEFAULT_NEXT_VERSION = '0.1.0'
@@ -23,7 +24,7 @@ interface ReleaseInformation {
   commitNumber: number
 }
 
-export const buildVersions = (currentVersion: string, releaseInformation: ReleaseInformation): Versions => {
+export const buildVersions = (currentVersion: string, releaseInformation: ReleaseInformation, data: CommandData): Versions => {
   logger.verbose('[versions-service][buildVersions]', 'Enter function')
   logger.silly('[versions-service][buildVersions] - input', 'currentVersion: %s', currentVersion)
   logger.silly('[versions-service][buildVersions] - input', 'releaseType: %s', releaseInformation.releaseType)
@@ -33,10 +34,10 @@ export const buildVersions = (currentVersion: string, releaseInformation: Releas
     currentVersion = DEFAULT_CURRENT_VERSION
   }
   const commitNumber = releaseInformation.commitNumber
-  const nextRelease = commitNumber > 0 ? inc(currentVersion, releaseInformation.releaseType) || DEFAULT_NEXT_VERSION : currentVersion
+  const nextRelease = commitNumber > 0 && !data.tagExists ? inc(currentVersion, releaseInformation.releaseType) || DEFAULT_NEXT_VERSION : currentVersion
   const nextMinor = inc(currentVersion, MINOR) || DEFAULT_NEXT_MINOR
   const nextPatch = inc(currentVersion, PATCH) || DEFAULT_NEXT_PATCH
-  const nextCommitTag = nextRelease
+  const nextCommitTag = data.tagPrefix + (data.tagExists ? currentVersion : nextRelease)
 
   return {
     currentVersion,
@@ -149,12 +150,7 @@ export const getVersions = async (data: GetVersionData): Promise<NodeJS.Readable
 
   const releaseInformation = await getReleaseInformation(data)
   const currentVersion = await getCurrentVersion(data)
-  const versions = buildVersions(currentVersion, releaseInformation)
+  const versions = buildVersions(currentVersion, releaseInformation, data)
 
-  return str(
-    JSON.stringify({
-      ...versions,
-      nextCommitTag: data.tagPrefix + versions.nextCommitTag,
-    }),
-  )
+  return str(JSON.stringify(versions))
 }

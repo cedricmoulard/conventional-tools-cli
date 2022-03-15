@@ -12,6 +12,7 @@ describe('Versions Service', () => {
     tagPrefix: '',
     debug: 'silent',
     scopes: '*',
+    tagExists: false,
   }
 
   afterAll(() => {
@@ -71,6 +72,22 @@ describe('Versions Service', () => {
       // Then
       expect(actual).toMatchSnapshot()
     })
+
+    test('returns patch version for module 2 (tag already exists)', async () => {
+      // Given
+      const data: GetVersionData = {
+        ...globalData,
+        tagPrefix: 'module2@',
+        scopes: 'module2|shared',
+        tagExists: true,
+      }
+
+      // When
+      const stream = await getVersions(data)
+      const actual = await getResultFromStream(stream)
+      // Then
+      expect(actual).toMatchSnapshot()
+    })
   })
 
   describe('given step 3', () => {
@@ -114,6 +131,22 @@ describe('Versions Service', () => {
         ...globalData,
         tagPrefix: 'module1@',
         scopes: 'module1|shared',
+      }
+
+      // When
+      const stream = await getVersions(data)
+      const actual = await getResultFromStream(stream)
+      // Then
+      expect(actual).toMatchSnapshot()
+    })
+
+    test('returns no new version for module 1 (existing tag)', async () => {
+      // Given
+      const data: GetVersionData = {
+        ...globalData,
+        tagPrefix: 'module1@',
+        scopes: 'module1|shared',
+        tagExists: true,
       }
 
       // When

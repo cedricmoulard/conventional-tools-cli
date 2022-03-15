@@ -8,7 +8,6 @@ import { getChangelog } from '../services/changelog-service'
 
 export interface GetChangelogData extends CommandData {
   readonly host: string
-  readonly tagExists: boolean
   readonly outputFile?: string
 }
 
@@ -17,12 +16,6 @@ const options: Option[] = [
     flags: '--host <host>',
     description: 'host for link commit',
     defaultValue: '',
-    required: true,
-  },
-  {
-    flags: '-e, --tag-exists',
-    description: 'tag already exists',
-    defaultValue: false,
     required: true,
   },
   {

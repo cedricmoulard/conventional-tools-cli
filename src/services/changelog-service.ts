@@ -50,7 +50,7 @@ export const getChangelog = async (data: GetChangelogData): Promise<NodeJS.Reada
 
   const releaseInformation = await getReleaseInformation(data)
   const currentVersion = await getCurrentVersion(data)
-  const versions = buildVersions(currentVersion, releaseInformation)
+  const versions = buildVersions(currentVersion, releaseInformation, data)
 
   const { tagExists, tagPrefix, host, preset } = data
   const options: conventionalChangelog.Options = {
@@ -69,7 +69,7 @@ export const getChangelog = async (data: GetChangelogData): Promise<NodeJS.Reada
       headerPattern: buildPattern(data),
     },
     {
-      finalizeContext: finalize(host, data.tagExists ? versions.currentVersion : versions.nextRelease),
+      finalizeContext: finalize(host, versions.nextCommitTag),
     },
   )
 }

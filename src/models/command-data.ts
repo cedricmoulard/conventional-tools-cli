@@ -3,4 +3,5 @@ export interface CommandData {
   readonly preset: string
   readonly tagPrefix: string
   readonly scopes: string
+  readonly tagExists: boolean
 }
