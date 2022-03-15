@@ -1,3 +1,17 @@
+## 1.4.0 (2022-03-15)
+
+
+### Features
+
+* **changelog:** use commit tag with prefix ([67756d8](/cedricmoulard/conventional-tools/commit/67756d8e0f2d78ff9b63f53598828053d5992cfd))
+* **versions:** return next commit tag ([d2ac916](/cedricmoulard/conventional-tools/commit/d2ac916ded6851040f2c4d6ed71c519a227a3ab0))
+* **versions:** return pre version ([99b0648](/cedricmoulard/conventional-tools/commit/99b0648d098e32423429af1aa6854c468372f5e9))
+
+
+### Bug Fixes
+
+* remove permanent log on constructor ([671096b](/cedricmoulard/conventional-tools/commit/671096bf8eab1ced01a11c94f824f23af48a7400))
+
 ## 1.3.0 (2022-03-14)
 
 
