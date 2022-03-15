@@ -14,7 +14,6 @@ export abstract class CustomCommand<T extends CommandData> extends Command {
     this.requiredOption('-s, --scopes <scopes>', 'conventional commits scope', '*')
 
     this.action((options: T) => {
-      logger.info('[custom-command][constructor]', 'options: %j', options)
       return this.preRun(options)
     })
 
@@ -30,7 +29,7 @@ export abstract class CustomCommand<T extends CommandData> extends Command {
   private async preRun(options: T): Promise<void> {
     // @ts-ignore
     logger.level = options.debug
-    logger.info('[custom-command][preRun]', 'data: %j', options)
+    logger.info('[custom-command][preRun]', 'options: %j', options)
     return this.run(options)
   }
 
