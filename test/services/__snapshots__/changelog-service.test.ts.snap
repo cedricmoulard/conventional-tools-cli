@@ -1,7 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Changelog Service given step 1 generates changelog 1`] = `
+"## 0.1.0 (2019-05-16)
+
+
+### Features
+
+* **module1:** add first file ([35db93c](/cedricmoulard/conventional-tools/commit/35db93ca549c9394c6bc98063e056ffdbd4d9544)), closes [#1](/cedricmoulard/conventional-tools/issues/1)
+* **module1:** add second file ([782d5db](/cedricmoulard/conventional-tools/commit/782d5db0f0767d995391c491ffaae07ce01e80bb)), closes [#1](/cedricmoulard/conventional-tools/issues/1)
+* **module2:** add first file ([14d8b69](/cedricmoulard/conventional-tools/commit/14d8b690b0a72b74cae3aa43a3f520bb671abc32)), closes [#2](/cedricmoulard/conventional-tools/issues/2)
+* **shared:** add first file ([b8fba0f](/cedricmoulard/conventional-tools/commit/b8fba0fce8e630880a05d540442d170a6a9bd9e5))
+* **shared:** add second file ([bf26eee](/cedricmoulard/conventional-tools/commit/bf26eee06e27f52d7fc9f4738454babf4745c99f)), closes [#1](/cedricmoulard/conventional-tools/issues/1)
+
+
+### Bug Fixes
+
+* **module2:** fix something ([9a65f55](/cedricmoulard/conventional-tools/commit/9a65f55b938cdab86c3ef11ace33b8267f587fd8)), closes [#2](/cedricmoulard/conventional-tools/issues/2)
+
+"
+`;
+
 exports[`Changelog Service given step 1 generates changelog for module 2 1`] = `
-"## 0.1.0 (2019-05-14)
+"## module2@0.1.0 (2019-05-14)
 
 
 ### Features
@@ -18,8 +38,27 @@ exports[`Changelog Service given step 1 generates changelog for module 2 1`] = `
 "
 `;
 
+exports[`Changelog Service given step 2 generates changelog for patch module 2 (tag already exists) 1`] = `
+"## module2@1.0.0 (2019-05-16)
+
+
+### Features
+
+* **module2:** add first file ([14d8b69](/cedricmoulard/conventional-tools/commit/14d8b690b0a72b74cae3aa43a3f520bb671abc32)), closes [#2](/cedricmoulard/conventional-tools/issues/2)
+* **shared:** add first file ([b8fba0f](/cedricmoulard/conventional-tools/commit/b8fba0fce8e630880a05d540442d170a6a9bd9e5))
+* **shared:** add second file ([bf26eee](/cedricmoulard/conventional-tools/commit/bf26eee06e27f52d7fc9f4738454babf4745c99f)), closes [#1](/cedricmoulard/conventional-tools/issues/1)
+
+
+### Bug Fixes
+
+* **module2:** fix something ([9a65f55](/cedricmoulard/conventional-tools/commit/9a65f55b938cdab86c3ef11ace33b8267f587fd8)), closes [#2](/cedricmoulard/conventional-tools/issues/2)
+* **module2:** fix something else ([f5b33c4](/cedricmoulard/conventional-tools/commit/f5b33c401e9081eb87b8d5322b9698dbbed087f6)), closes [#111](/cedricmoulard/conventional-tools/issues/111)
+
+"
+`;
+
 exports[`Changelog Service given step 2 generates changelog for patch module 2 1`] = `
-"## 1.0.1 (2019-05-16)
+"## module2@1.0.1 (2019-05-16)
 
 
 ### Bug Fixes
@@ -30,7 +69,7 @@ exports[`Changelog Service given step 2 generates changelog for patch module 2 1
 `;
 
 exports[`Changelog Service given step 3 generates changelog with breaking change for module 1 (existing tag) 1`] = `
-"## 2.0.0 (2019-05-16)
+"## module1@2.0.0 (2019-05-16)
 
 
 ### ⚠ BREAKING CHANGES
@@ -50,7 +89,7 @@ exports[`Changelog Service given step 3 generates changelog with breaking change
 `;
 
 exports[`Changelog Service given step 3 generates changelog with breaking change for module 2 1`] = `
-"## 2.0.0 (2019-05-16)
+"## module2@2.0.0 (2019-05-16)
 
 
 ### ⚠ BREAKING CHANGES
@@ -65,7 +104,7 @@ exports[`Changelog Service given step 3 generates changelog with breaking change
 `;
 
 exports[`Changelog Service given step 3 generates changelog without breaking change for module 2 1`] = `
-"## 1.0.1 (2019-05-16)
+"## module2@1.0.1 (2019-05-16)
 
 "
 `;

@@ -49,6 +49,19 @@ describe('Changelog Service', () => {
       // Then
       expect(actual).toMatchSnapshot()
     })
+
+    test('generates changelog', async () => {
+      // Given
+      const data: GetChangelogData = {
+        ...globalData,
+      }
+
+      // When
+      const stream = await getChangelog(data)
+      const actual = await getResultFromStream(stream)
+      // Then
+      expect(actual).toMatchSnapshot()
+    })
   })
 
   describe('given step 2', () => {
@@ -62,6 +75,22 @@ describe('Changelog Service', () => {
         ...globalData,
         tagPrefix: 'module2@',
         scopes: 'module2|shared',
+      }
+
+      // When
+      const stream = await getChangelog(data)
+      const actual = await getResultFromStream(stream)
+      // Then
+      expect(actual).toMatchSnapshot()
+    })
+
+    test('generates changelog for patch module 2 (tag already exists)', async () => {
+      // Given
+      const data: GetChangelogData = {
+        ...globalData,
+        tagPrefix: 'module2@',
+        scopes: 'module2|shared',
+        tagExists: true,
       }
 
       // When
