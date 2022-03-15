@@ -36,12 +36,14 @@ export const buildVersions = (currentVersion: string, releaseInformation: Releas
   const nextRelease = commitNumber > 0 ? inc(currentVersion, releaseInformation.releaseType) || DEFAULT_NEXT_VERSION : currentVersion
   const nextMinor = inc(currentVersion, MINOR) || DEFAULT_NEXT_MINOR
   const nextPatch = inc(currentVersion, PATCH) || DEFAULT_NEXT_PATCH
+  const nextCommitTag = nextRelease
 
   return {
     currentVersion,
     nextRelease,
     nextMinor,
     nextPatch,
+    nextCommitTag,
     commitNumber,
   }
 }
@@ -149,5 +151,10 @@ export const getVersions = async (data: GetVersionData): Promise<NodeJS.Readable
   const currentVersion = await getCurrentVersion(data)
   const versions = buildVersions(currentVersion, releaseInformation)
 
-  return str(JSON.stringify(versions))
+  return str(
+    JSON.stringify({
+      ...versions,
+      nextCommitTag: data.tagPrefix + versions.nextCommitTag,
+    }),
+  )
 }

@@ -37,6 +37,19 @@ describe('Versions Service', () => {
       // Then
       expect(actual).toMatchSnapshot()
     })
+
+    test('returns minor version', async () => {
+      // Given
+      const data: GetVersionData = {
+        ...globalData,
+      }
+
+      // When
+      const stream = await getVersions(data)
+      const actual = await getResultFromStream(stream)
+      // Then
+      expect(actual).toMatchSnapshot()
+    })
   })
 
   describe('given step 2', () => {
