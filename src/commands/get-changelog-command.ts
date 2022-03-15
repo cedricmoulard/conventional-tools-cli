@@ -8,6 +8,7 @@ import { getChangelog } from '../services/changelog-service'
 
 export interface GetChangelogData extends CommandData {
   readonly host: string
+  readonly config?: string
   readonly outputFile?: string
 }
 
@@ -17,6 +18,11 @@ const options: Option[] = [
     description: 'host for link commit',
     defaultValue: '',
     required: true,
+  },
+  {
+    flags: '-n, --config <config-file>',
+    description: 'config file in json format. See https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-conventionalcommits',
+    required: false,
   },
   {
     flags: '-o, --output-file <file>',
