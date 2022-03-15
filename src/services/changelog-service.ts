@@ -5,6 +5,8 @@ import * as logger from 'npmlog'
 import { buildPattern } from './utils'
 import { Context, GeneratedContext, Options } from 'conventional-changelog-writer'
 import { Commit } from 'conventional-commits-parser'
+import { merge } from 'lodash'
+import * as path from 'path'
 
 export const RELEASE_COUNT_FOR_EXISTING_TAG = 2
 export const RELEASE_COUNT_FOR_CREATE_TAG = 1
@@ -52,11 +54,18 @@ export const getChangelog = async (data: GetChangelogData): Promise<NodeJS.Reada
   const currentVersion = await getCurrentVersion(data)
   const versions = buildVersions(currentVersion, releaseInformation, data)
 
-  const { tagExists, tagPrefix, host, preset } = data
+  const { tagExists, tagPrefix, host, preset, config } = data
+
   const options: conventionalChangelog.Options = {
     tagPrefix,
     preset,
     releaseCount: tagExists ? RELEASE_COUNT_FOR_EXISTING_TAG : RELEASE_COUNT_FOR_CREATE_TAG,
+  }
+
+  if (config) {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const configContent = require(path.join(process.cwd(), config))
+    options.config = configContent.options = merge(options, configContent.options)
   }
 
   logger.verbose('[changelog-service][getChangelog]', 'conventional changelog log options: %o', options)
@@ -64,11 +73,15 @@ export const getChangelog = async (data: GetChangelogData): Promise<NodeJS.Reada
   return conventionalChangelog(
     options,
     undefined,
-    undefined,
     {
+      debug: message => logger.silly('[changelog-service][gitRawCommitsOpts]', 'message: %s', message),
+    },
+    {
+      warn: message => logger.silly('[changelog-service][parserOpts]', 'warn message: %s', message),
       headerPattern: buildPattern(data),
     },
     {
+      debug: message => logger.silly('[changelog-service][writerOps]', 'message: %s', message),
       finalizeContext: finalize(host, versions.nextCommitTag),
     },
   )
